@@ -1,0 +1,21 @@
+<html lang="en"><!--https://htmlcolorcodes.com/color-names/-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<link href="header.css" rel="stylesheet">
+		<link href="vocab.css" rel="stylesheet">
+	</head>
+	<body>
+		<main id="vocab">
+			<button>EN ⇄ RU</button>
+			<div id="keyboard"><div id="row1" class="row"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div id="row2" class="row"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div id="row3" class="row"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div id="row4" class="row"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div>
+			<p id="prompt"></p>
+			<p id="answer"></p>
+			<div id="controls"><p id="upload">Upload</p><p id="keep10">Keep 10</p><p id="clear">Clear all</p><p id="example">Example</p><p id="download">Download</p></div>
+			<div id="words"></div>
+			<input type="file" accept=".xlsx, .ods" style="display: none;">
+		</main>
+	</body>
+	<script src="header.js"></script>
+	<script src="import/xlsx.full.min.js"></script>
+	<script src="vocab.js"></script>
+</html>

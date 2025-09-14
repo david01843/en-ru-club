@@ -1,0 +1,77 @@
+main button {
+	padding: 1px 8px;
+}
+main #editor, main #search, main #pdf {
+	display: none;
+}
+main #editor, main #search {
+	width: 1000px;
+	margin: 32px;
+}
+main #editor a {
+	margin-right: 32px;
+	color: gray;
+}
+main #editor a:hover {
+	cursor: pointer;
+	color: black;
+}
+main #editor div {
+	position: relative;
+	flex-basis: 100%;
+	height: 707px;
+	margin-top: 8px;
+	border: 1px solid gray;
+}
+main #editor div p {
+	transform: translate(-50%, -50%);
+}
+main #editor .hide {
+	display: none;
+}
+main #editor div img, main #editor div canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1000px;
+	height: 100%;
+}
+main #editor div #text {
+	font-size: 14px;
+	position: absolute;
+	text-decoration: underline;
+	z-index: 1;
+}
+main #editor input {
+	-webkit-appearance: none;
+	height: 20px;
+	padding: 0 4px;
+	border: 1px solid gray;
+	margin-top: 8px;
+	outline: none;
+}
+main #editor input:nth-of-type(1) {
+	margin-right: 8px;
+	width: 300px;
+}
+main #editor input:nth-of-type(2) {
+	width: 100px;
+}
+main #editor input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: gray;
+}
+
+main #search img {
+	margin: 4px;
+	width: 198px;
+	height: 140px;
+	border: 1px solid black;
+}
+main #search img:hover {
+	cursor: pointer;
+}
+

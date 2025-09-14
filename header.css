@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	user-select: none;
+}
+header {
+	float: left;
+	width: 228px;
+	height: 100%;
+	background: gainsboro;
+}
+header h1 {
+	font-size: 32px;
+	margin: 32px 0 8px 0;
+	text-align: center;
+}
+header div a {
+	display: block;
+	width: fit-content;
+	padding: 4px 12px;
+	margin: 4px auto;
+	text-decoration: none;
+	font-size: 16px;
+	color: black;
+	background-color: white;
+	border-radius: 16px;
+}
+header div a:hover {
+	color: white;
+	background-color: gray;
+}
+main {
+	float: left;
+	width: calc(100% - 292px);
+	height: calc(100% - 64px);
+	margin: 32px;
+}
