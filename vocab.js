@@ -22,10 +22,10 @@ readxlsx.onchange = (e1) => {
 		const w = XLSX.read(e2.target.result, {type: "array"})
 		const j = XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]], {header: 1})
 		for (let i = 0; i < j.length; i++) {addword(j[i][0].trim(), j[i][1].trim())}
+		e1.target.value = ''
 	}
 	r.readAsArrayBuffer(f)
 	cycle()
-	e1.target.value = ''
 }
 controls[0].addEventListener("click", () => {readxlsx.click()})
 controls[1].addEventListener("click", () => {
