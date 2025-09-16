@@ -25,6 +25,7 @@ readxlsx.onchange = (e1) => {
 	}
 	r.readAsArrayBuffer(f)
 	cycle()
+	e1.target.value = ''
 }
 controls[0].addEventListener("click", () => {readxlsx.click()})
 controls[1].addEventListener("click", () => {
