@@ -133,6 +133,7 @@ window.addEventListener("keydown", async (e) => {
 		else if (e.key == "Enter") {stoptyping(); server.send(JSON.stringify({cmd: 5.0, pg: page, xy1: xy1, clr: color[0].style.background, str: e.shiftKey ? await translate() : [text.innerHTML]}))}
 		else if (e.key == "Escape") {stoptyping()}
 		else if (e.key == "Shift" && e.altKey) {lang = (lang+1)%2}
+		else if (e.key == "Control") {lang = (lang+1)%2}
 		if (e.keyCode == 86 && e.ctrlKey) {stoptyping(); text.innerHTML = await navigator.clipboard.readText()} // ctrl+V
 	}
 })
