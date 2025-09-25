@@ -5,6 +5,7 @@ const header = `
 			<a href="index.html">Home</a>
 			<a href="rwd.html">Read, write, draw</a>
 			<a href="vocab.html">Study vocabulary</a>
+			<a href="vocab_mobile.html">Vocab demo (mobile)</a>
 		</div>
 		<h1>Resources</h1>
 		<div id="resources">
