@@ -1,0 +1,57 @@
+<html lang="en"><!--https://htmlcolorcodes.com/color-names/-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		* {margin: 0; padding: 0; user-select: none;}
+		body {
+			display: grid; grid-template-columns: 1fr 144px 16px 144px 1fr;
+			width: calc(100vw - 32px); margin: 0 16px;
+		}
+		p {
+			display: flex; justify-content: center; height: 144px;
+			font-family: sans-serif; font-size: 48px;
+		}
+		p:nth-child(1) {grid-column: 2; align-items: flex-end; color: gray;}
+		p:nth-child(2) {grid-column: 4}
+	</style>
+	<body><p></p><p></p></body>
+	<script>
+		var b = document.querySelector("body")
+		function setWindow() {
+			b.style.height = window.innerHeight; b.style.display = "flex"
+			b.style.flexDirection = "column"; b.style.justifyContent = "center"
+		} setWindow()
+		window.addEventListener("orientationchange", () => {setWindow()})
+		window.addEventListener("resize", () => {setWindow()})
+		
+		var p = document.querySelectorAll("p")
+		const urlParams = new URLSearchParams(window.location.search)
+		const data = JSON.parse(decodeURIComponent(urlParams.get("data")))
+		const q = data.filter((_, j) => j % 2 == 1) // questions
+		const a = data.filter((_, j) => j % 2 == 0) // answers
+		var t = Array(q.length).fill(0) // tallies for correct answers
+		var o = Array.from({length: q.length}, (_, j) => j).sort(() => Math.random() - 0.5) // order
+		var i = 0 // index
+		var cycling = false
+		
+		function cycle() {
+			if (t[o[i]] == 2) {o = o.filter((_, j) => j !== i)}
+			else {i++}
+			if (o.length > 0) {i = i%o.length; p[0].innerHTML = q[o[i]]; p[1].innerHTML = ""}
+			else {window.location.replace("vocab_mobile_main.html")}
+		} cycle()
+		async function show() {
+			cycling = true; await new Promise(x => setTimeout(x, 700))
+			p[1].style.color = "#000"; cycle(); cycling = false
+		}
+		window.addEventListener("pointerdown", async (e) => {
+			if (p[1].innerHTML == "") p[1].innerHTML = a[o[i]]
+			else if (!cycling && e.clientX < window.innerWidth/2)
+				{p[1].style.color = "#f00"; t[o[i]] = 0; await show()}
+			else if (!cycling)
+				{p[1].style.color = "#0b0"; t[o[i]]++; await show()}
+		})
+	</script>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en"><!--https://htmlcolorcodes.com/color-names/-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		* {margin: 0; padding: 0; user-select: none;}
+		body {margin: 8px;}
+		button {margin: 8px; padding: 16px; font-size: 16px;}
+	</style>
+	<body></body>
+	<script>
+		var data = [
+			["Test", "one", "один", "two", "два", "three", "три", "four", "четыре"],
+			//[]
+		]
+		
+		var body = document.querySelector("body")
+		function setWindow() {
+			body.style.width = window.innerWidth-16
+			body.style.height = window.innerHeight-16
+		} setWindow()
+		window.addEventListener("orientationchange", () => {setWindow()})
+		window.addEventListener("resize", () => {setWindow()})
+		
+		for (let i = 0; i < data.length; i++) {
+			var b = document.createElement("button")
+			b.innerHTML = data[i][0]
+			b.addEventListener("click", () => {
+				var d = encodeURIComponent(JSON.stringify(data[i].splice(1)))
+				window.location.replace(`vocab_mobile_app.html?data=${d}`)
+			})
+			body.appendChild(b)
+		}
+	</script>
+</html>
