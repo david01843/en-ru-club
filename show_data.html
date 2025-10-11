@@ -1,0 +1,28 @@
+<html lang="en"><!--https://htmlcolorcodes.com/color-names/-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<link href="header.css" rel="stylesheet">
+	</head>
+	<body>
+		<main></main>
+	</body>
+	<script src="header.js" type="text/javascript"></script>
+	<script src="vocab_data.js"></script>
+	<script>
+		main = document.querySelector("main")
+		var p
+		data.forEach(i => {
+			p = document.createElement("p")
+			p.innerHTML = i[0]
+			main.appendChild(p)
+			main.innerHTML += "<br>"
+			for (j = 1; j < i.length; j += 2) {
+				p = document.createElement("p")
+				p.innerHTML = `${i[j]} ---- ${i[j+1]}`
+				main.appendChild(p)
+			}
+			main.innerHTML += "<br>"
+		})
+	</script>
+</html>
+
