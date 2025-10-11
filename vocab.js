@@ -96,6 +96,7 @@ function cycle() {
 	speechSynthesis.cancel()
 }
 document.addEventListener("keydown", (e) => {
+	console.log(e.keyCode)
 	if (codes.includes(e.keyCode)) {answer.innerHTML += chars[lang][codes.indexOf(e.keyCode)]; check()}
 	else if (e.keyCode == 8) {answer.innerHTML = answer.innerHTML.slice(0, -1); check()}
 	else if (e.keyCode == 13) {
@@ -104,6 +105,7 @@ document.addEventListener("keydown", (e) => {
 		else {answer.innerHTML = active.dataset.ans; check()}
 	}
 	else if (e.keyCode == 16) {shift = 1}
+	else if (e.keyCode == 17) {speechSynthesis.cancel(); speechSynthesis.speak(audio)}
 	else if (e.keyCode == 32) {answer.innerHTML += " "; check()}
 })
 document.addEventListener("keyup", (e) => {if (e.keyCode == 16) {shift = 0}})
