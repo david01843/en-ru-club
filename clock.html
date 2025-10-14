@@ -6,7 +6,7 @@
 	<style>
 		* {margin: 0; padding: 0; user-select: none;}
 		body {
-			height: 100vh; width: 100vh;
+			height: 100vh; width: 100vw;
 			display: flex; justify-content: center; align-items: center;
 		}
 		p {text-align: center; font-size: 128px;}
@@ -28,9 +28,7 @@
 			m = String(t.getMinutes()).padStart(2, '0')
 			s = String(t.getSeconds()).padStart(2, '0')
 			p.innerHTML = `${m}:${s}`
-			setInterval(setClock, 99)
 		}
-		setClock()
-		
+		setClock(); setInterval(setClock, 1000)
 	</script>
 </html>
