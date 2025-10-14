@@ -5,23 +5,26 @@
 	</head>
 	<style>
 		* {margin: 0; padding: 0; user-select: none;}
-		body {
-			height: 100vh; width: 100vw;
-			display: flex; justify-content: center; align-items: center;
-		}
-		p {text-align: center; font-size: 128px;}
+		p {display: inline-block; text-align: center; font-family: "monospace";}
 	</style>
 	<body><p>00:00</p></body>
 	<script>
-		var b = document.querySelector("body")
+		const b = document.querySelector("body")
+		const p = document.querySelector("p")
+		const wh = p.getBoundingClientRect()
+		
 		function setWindow() {
-			b.style.height = window.innerHeight; b.style.display = "flex"
-			b.style.flexDirection = "column"; b.style.justifyContent = "center"
+			b.style.height = window.innerHeight
+			b.style.width = window.innerWidth
+			b.style.display = "flex"
+			b.style.flexDirection = "column"
+			b.style.justifyContent = "center"
+			b.style.alignItems = "center"
+			p.style.fontSize = `${Math.min(0.8*window.innerWidth*wh["height"]/wh["width"], 0.8*window.innerHeight)}px`
 		} setWindow()
 		window.addEventListener("orientationchange", () => {setWindow()})
 		window.addEventListener("resize", () => {setWindow()})
 		
-		const p = document.querySelector("p")
 		var t; var m; var s
 		function setClock() {
 			t = new Date()
