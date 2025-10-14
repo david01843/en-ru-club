@@ -1,0 +1,36 @@
+<html lang="en"><!--https://htmlcolorcodes.com/color-names/-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		* {margin: 0; padding: 0; user-select: none;}
+		body {
+			height: 100vh; width: 100vh;
+			display: flex; justify-content: center; align-items: center;
+		}
+		p {text-align: center; font-size: 128px;}
+	</style>
+	<body><p>00:00</p></body>
+	<script>
+		var b = document.querySelector("body")
+		function setWindow() {
+			b.style.height = window.innerHeight; b.style.display = "flex"
+			b.style.flexDirection = "column"; b.style.justifyContent = "center"
+		} setWindow()
+		window.addEventListener("orientationchange", () => {setWindow()})
+		window.addEventListener("resize", () => {setWindow()})
+		
+		const p = document.querySelector("p")
+		var t; var m; var s
+		function setClock() {
+			t = new Date()
+			m = String(t.getMinutes()).padStart(2, '0')
+			s = String(t.getSeconds()).padStart(2, '0')
+			p.innerHTML = `${m}:${s}`
+			setInterval(setClock, 99)
+		}
+		setClock()
+		
+	</script>
+</html>

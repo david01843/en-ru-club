@@ -7,6 +7,7 @@ const header = `
 			<a href="vocab.html">Study vocabulary</a>
 			<a href="vocab_mobile_main.html">Flash cards for mobile</a>
 			<a href="show_data.html">Show database</a>
+			<a href="clock.html">Clock</a>
 		</div>
 		<h1>Resources</h1>
 		<div id="resources">
