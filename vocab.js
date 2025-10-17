@@ -1,22 +1,11 @@
-chars = ["ё1234567890-=йцукенгшщзхъ\\фывапролджэячсмитьбю,", "`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./"]
-codes = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191]
-shift = false
-lang = 0
-active = null
-audio = new SpeechSynthesisUtterance()
+const chars = "ё1234567890-=йцукенгшщзхъ\\фывапролджэячсмитьбю,"
+const codes = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191]
+var shift = false
+var active = null
+var audio = new SpeechSynthesisUtterance()
 audio.lang = "ru"
+var subset = 3e3
 
-const language = document.querySelector("#vocab #language")
-language.addEventListener("click", (e) => {
-	lang = (lang+1)%2
-	labelkeys()
-	active = null
-	audio.lang = ["ru", "en"][lang]
-	prompt.innerHTML = ""
-	answer.innerHTML = ""
-	words.innerHTML = ""
-	e.target.blur()
-})
 const keys = document.querySelectorAll("#vocab .row p")
 const prompt = document.querySelector("#vocab #prompt")
 const answer = document.querySelector("#vocab #answer")
@@ -35,6 +24,11 @@ controls[2].addEventListener("click", () => {
 	Array.from(document.querySelectorAll("#words p")).forEach(i => i.remove())
 	cycle()
 })
+controls[3].addEventListener("click", () => {
+	if (subset == 3e3) {subset = 4; controls[3].innerHTML = "subset 4"}
+	else if (subset == 4) {subset = 8; controls[3].innerHTML = "subset 8"}
+	else {subset = 3e3; controls[3].innerHTML = "subset off"}
+})
 const readxlsx = document.querySelector("#vocab input")
 readxlsx.onchange = (e1) => {
 	const f = e1.target.files[0]
@@ -44,30 +38,26 @@ readxlsx.onchange = (e1) => {
 		const w = XLSX.read(e2.target.result, {type: "array"})
 		const j = XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]], {header: 1})
 		for (let i = 0; i < j.length; i++) {addword(j[i][0].trim(), j[i][1].trim())}
-		e1.target.value = ''
+		shuffle()
 		cycle()
 	}
+	e1.target.value = ''
 	r.readAsArrayBuffer(f)
 }
 words = document.querySelector("#vocab #words")
 
-data.forEach(i => {
-	var p = document.createElement("p")
-	p.innerHTML = i[0]
-	p.addEventListener("click", () => {
-		for (j = 1; j < i.length; j += 2) {addword(i[j], i[j+1])}
-		cycle()
-	})
-	lists.appendChild(p)
-})
-function labelkeys() {for (let i = 0; i < 47; i++) {keys[i].innerHTML = chars[lang][i]}}
-labelkeys()
+function labelkeys() {for (let i = 0; i < 47; i++) {keys[i].innerHTML = chars[i]}}
 function addword(s1, s2) {
 	w = document.createElement("p")
 	w.dataset.ans = s1 // answer
 	w.innerHTML = s2 // prompt
 	w.addEventListener("click", (e) => {e.target.remove()})
 	words.appendChild(w)
+}
+function shuffle() {
+	const p = Array.from(words.querySelectorAll('p'))
+	p.sort(() => Math.random()-.5)
+	p.forEach(p => words.appendChild(p))
 }
 function check() {
 	if (prompt.innerHTML != "") {
@@ -82,7 +72,7 @@ function check() {
 	}
 }
 function cycle() {
-	active = Array.from(words.querySelectorAll("p")).filter(i => i != active)
+	active = Array.from(words.querySelectorAll("p")).slice(0, subset).filter(i => i != active)
 	if (active.length != 0) {
 		active = active[Math.floor(Math.random()*active.length)]
 		prompt.innerHTML = active.innerHTML
@@ -97,7 +87,7 @@ function cycle() {
 }
 document.addEventListener("keydown", (e) => {
 	console.log(e.keyCode)
-	if (codes.includes(e.keyCode)) {answer.innerHTML += chars[lang][codes.indexOf(e.keyCode)]; check()}
+	if (codes.includes(e.keyCode)) {answer.innerHTML += chars[codes.indexOf(e.keyCode)]; check()}
 	else if (e.keyCode == 8) {answer.innerHTML = answer.innerHTML.slice(0, -1); check()}
 	else if (e.keyCode == 13) {
 		if (!active) {cycle()}
@@ -109,3 +99,15 @@ document.addEventListener("keydown", (e) => {
 	else if (e.keyCode == 32) {answer.innerHTML += " "; check()}
 })
 document.addEventListener("keyup", (e) => {if (e.keyCode == 16) {shift = 0}})
+
+data.forEach(i => {
+	var p = document.createElement("p")
+	p.innerHTML = i[0]
+	p.addEventListener("click", () => {
+		for (j = 1; j < i.length; j += 2) {addword(i[j], i[j+1])}
+		shuffle()
+		cycle()
+	})
+	lists.appendChild(p)
+})
+labelkeys()

@@ -4,18 +4,6 @@
 	grid-template-rows: repeat(6, auto) 1fr;
 	justify-items: center;
 }
-#vocab #language {
-	display: inline-block;
-	margin: 2px;
-	border-radius: 10px;
-	font-family: sans-serif;
-	font-size: 18px;
-	padding: 2px 12px;
-	cursor: pointer;
-	margin-bottom: 16px;
-	color: white;
-	background-color: lightsteelblue;
-}
 #vocab #keyboard {margin-bottom: 16px;}
 #vocab .row {display: flex; flex-direction: row;}
 #vocab .row p {
@@ -54,7 +42,7 @@
 	padding: 2px 8px;
 	cursor: pointer;
 }
-#vocab #lists p {color: black; background-color: lightsteelblue;}
-#vocab #controls p {color: white; background-color: mediumblue;}
+#vocab #lists p {background-color: lavender;}
+#vocab #controls p {background-color: thistle;}
 #vocab #words {text-align: center; margin-top: 16px;}
-#vocab #words p {color: black; background-color: lightsteelblue;}
+#vocab #words p {background-color: gainsboro;}
