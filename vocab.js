@@ -1,11 +1,3 @@
-const chars = "ё1234567890-=йцукенгшщзхъ\\фывапролджэячсмитьбю,"
-const codes = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191]
-var shift = false
-var active = null
-var audio = new SpeechSynthesisUtterance()
-audio.lang = "ru"
-var subset = 3e3
-
 const keys = document.querySelectorAll("#vocab .row p")
 const prompt = document.querySelector("#vocab #prompt")
 const answer = document.querySelector("#vocab #answer")
@@ -25,9 +17,8 @@ controls[2].addEventListener("click", () => {
 	cycle()
 })
 controls[3].addEventListener("click", () => {
-	if (subset == 3e3) {subset = 4; controls[3].innerHTML = "subset 4"}
-	else if (subset == 4) {subset = 8; controls[3].innerHTML = "subset 8"}
-	else {subset = 3e3; controls[3].innerHTML = "subset off"}
+	if (subset == 5) {subset = 3e3; controls[3].innerHTML = "subset off"}
+	else {subset = 5; controls[3].innerHTML = "subset on"}
 })
 const readxlsx = document.querySelector("#vocab input")
 readxlsx.onchange = (e1) => {
@@ -100,6 +91,13 @@ document.addEventListener("keydown", (e) => {
 })
 document.addEventListener("keyup", (e) => {if (e.keyCode == 16) {shift = 0}})
 
+const chars = "ё1234567890-=йцукенгшщзхъ\\фывапролджэячсмитьбю,"
+const codes = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191]
+var shift = false
+var active = null
+var audio = new SpeechSynthesisUtterance()
+audio.lang = "ru"
+var subset = 3e3
 data.forEach(i => {
 	var p = document.createElement("p")
 	p.innerHTML = i[0]
