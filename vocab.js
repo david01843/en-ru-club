@@ -77,7 +77,6 @@ function cycle() {
 	speechSynthesis.cancel()
 }
 document.addEventListener("keydown", (e) => {
-	console.log(e.keyCode)
 	if (codes.includes(e.keyCode)) {answer.innerHTML += chars[codes.indexOf(e.keyCode)]; check()}
 	else if (e.keyCode == 8) {answer.innerHTML = answer.innerHTML.slice(0, -1); check()}
 	else if (e.keyCode == 13) {
