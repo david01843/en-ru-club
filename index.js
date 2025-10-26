@@ -28,7 +28,8 @@ GDXJ|black|https://finance.yahoo.com/quote/GDXJ/
 GDX|black|https://finance.yahoo.com/quote/GDX/
 SAND|black|https://finance.yahoo.com/quote/SAND/
 Barr|black|https://finance.yahoo.com/quote/B/
-NEM|black|https://finance.yahoo.com/quote/NEM/`.split("\n")
+NEM|black|https://finance.yahoo.com/quote/NEM/
+YouTube|red|http://www.youtube.com/`.split("\n")
 m = document.querySelector("main")
 x.forEach(i => {
 	var y = i.trim().split("|"); var a = document.createElement("a")
