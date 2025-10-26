@@ -28,9 +28,11 @@ GDXJ|black|https://finance.yahoo.com/quote/GDXJ/
 GDX|black|https://finance.yahoo.com/quote/GDX/
 SAND|black|https://finance.yahoo.com/quote/SAND/
 Barr|black|https://finance.yahoo.com/quote/B/
-NEM|black|https://finance.yahoo.com/quote/NEM/
-YouTube|red|http://www.youtube.com/`.split("\n")
+NEM|black|https://finance.yahoo.com/quote/NEM/`.split("\n")
 m = document.querySelector("main")
+m.addEventListener("click", (e) => {
+	if (e.target == m) {window.location.href = "https://www.youtube.com/"}
+})
 x.forEach(i => {
 	var y = i.trim().split("|"); var a = document.createElement("a")
 	a.innerHTML = y[0]; a.style.color = y[1]; a.href = y[2]; a.target = "_blank"; m.appendChild(a)
