@@ -1,7 +1,8 @@
-main h1 {
-	font-size: 32px;
+main a {
+	display: block;
+	width: fit-content;
+	text-decoration: none;
 }
-main h2 {
-	font-size: 24px;
-	margin-top: 24px;
+main a:hover {
+	padding-left: 4px;
 }

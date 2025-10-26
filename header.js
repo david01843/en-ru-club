@@ -16,6 +16,7 @@ const header = `
 			<a href="https://www.merriam-webster.com/">Dictionary</a>
 			<a href="https://www.urbandictionary.com/">Urban dictionary</a>
 			<a href="https://chat.deepseek.com/">Deepseek</a>
+			<a href="https://www.youtube.com/">YouTube</a>
 		</div>
 	</header>
 `
