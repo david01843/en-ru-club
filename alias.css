@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	font-family: sans-serif; text-align: center;
+	user-select: none;
+}
+body {
+	display: grid; /*history, word, next, timer, direction*/
+	grid-template-rows: 1fr auto auto auto auto;
+	margin: 1vh; grid-gap: 2vh;
+}
+#history {
+	overflow: hidden;
+}
+#history p {
+	text-align: left;
+	font-size: 2vh;
+}
+#newgame {
+	position: absolute; top: 0; right: 0;
+}
+#newgame p {
+	font-size: 4vh;
+	color: blue;
+	margin: 1vh 1vh 0 0; padding: 1vh;
+	background-color: #eef;
+	border: solid 2px blue; border-radius: 50%;
+}
+#word {
+	grid-row: 2;
+	font-size: 5vh;
+}
+#next {
+	grid-row: 3;
+	display: flex;
+	margin: 4vh 0;
+}
+#next p {
+	margin: 0 1vh;
+	font-size: 3vh;
+	width: 100%;
+	color: firebrick; background-color: #fdd;
+	border: solid .4vh firebrick; border-radius: 2vh;
+}
+#next p:nth-child(2) {
+	background-color: #ffd;
+	color: green; border: solid .4vh green;
+}
+#timer {
+	grid-row: 4;
+	font-size: 8vh;
+	color: gray;
+}
+#direction {
+	grid-row: 5;
+	font-size: 2vh;
+	color: gray;
+}

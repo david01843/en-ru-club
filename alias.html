@@ -1,0 +1,65 @@
+<html lang="en"><!--https://colorscheme.ru/html-colors.html-->
+	<head>
+		<meta charset="UTF-8" name="google" content="notranslate">
+		<link href="alias.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="history"></div>
+		<div id="newgame"><p>en</p><p>ру</p></div>
+		<p id="word"></p>
+		<div id="next"><p>&#10008;</p><p>&#10004;</p></div>
+		<p id="timer">60</p>
+		<p id="direction">Tap word to translate.<br>Нажми на слово для перевода.<br>Tap lanugage for new game.<br>Нажми на язык для новой игры.</p>
+	</body>
+	<script src="alias_data.js"></script>
+	<script>
+		const history = document.querySelector("#history")
+		const newgame = document.querySelectorAll("#newgame p")
+		const word = document.querySelector("#word")
+		const next = document.querySelectorAll("#next p")
+		const timer = document.querySelector("#timer")
+		
+		const dl = data.length/2
+		const order = [...Array(dl).keys()].sort(() => Math.random()-.5)
+		var w = 0 // index of word
+		var lang = 0 // 0 english, 1 russian
+		var stop = 0 // new game timer stops 
+		
+		function init(l) {
+			lang = l
+			stop += 1
+			history.innerHTML = ""
+			word.innerHTML = data[2*order[w]+lang]
+			timer.innerHTML = 60
+			setTimeout(tick, 1000)
+		}
+		function tick() {
+			if (stop > 1) {
+				stop -= 1
+			} else {
+				timer.innerHTML -= 1
+				timer.innerHTML > 0 ? setTimeout(tick, 1000) : stop -= 1
+			}
+		}
+		function cycle(c) {
+			if (stop > 0) {
+				var p = document.createElement("p")
+				p.innerHTML = `${data[2*order[w]+lang]} -- ${data[2*order[w]+1-lang]}`
+				p.style.color = c
+				history.appendChild(p)
+				w = (w+1)%dl
+				word.innerHTML = data[2*order[w]+lang]
+			}
+		}
+		newgame[0].addEventListener("click", () => init(0))
+		newgame[1].addEventListener("click", () => init(1))
+		word.addEventListener("click", () => {
+			word.innerHTML = `${data[2*order[w]+1-lang]}<br>${data[2*order[w]+lang]}`
+		})
+		next[0].addEventListener("click", () => cycle("firebrick"))
+		next[1].addEventListener("click", () => cycle("green"))
+	</script>
+</html>
+
+
+

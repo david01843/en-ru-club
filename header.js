@@ -8,6 +8,7 @@ const header = `
 		<a href="vocab_mobile_main.html">Flash cards for mobile</a>
 		<a href="show_data.html">Show database</a>
 		<a href="clock.html">Clock</a>
+		<a href="alias.html">Alias</a>
 	</div>
 </header>`
 var body = document.querySelector("body")
