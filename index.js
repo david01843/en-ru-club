@@ -18,6 +18,7 @@ GitHub|purple|https://github.com/
 DenoDeploy|purple|https://dash.deno.com/
 KFUlogin|blue|https://shelly.kpfu.ru/e-ksu/portal_podfak_site.login
 StudeRus|blue|https://studerus.ru/
+Stepik|blue|https://stepik.org/lesson/329538/step/1
 RussianRailways|red|https://eng.rzd.ru/
 fmhy|hotpink|https://fmhy.net/
 MVD-TRP|turquoise|https://xn--b1aew.xn--p1ai/dejatelnost/emvd/guvm/%D0%B2%D1%8B%D0%B4%D0%B0%D1%87%D0%B0-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8
