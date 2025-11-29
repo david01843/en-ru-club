@@ -6,6 +6,7 @@ Google|green|https://www.google.com/
 Gtranslate|green|https://translate.google.com/?sl=en&tl=ru&op=translate
 Gmail|green|https://mail.google.com/mail/u/0/#inbox
 Outlook|steelblue|https://outlook.office.com/mail/inbox
+Whatsapp|lime|https://web.whatsapp.com/
 SberBank|limegreen|https://online.sberbank.ru/CSAFront/index.do#/
 Beeline|darkkhaki|https://kazan.beeline.ru/customers/products/
 Deepseek|blue|https://chat.deepseek.com/sign_up
